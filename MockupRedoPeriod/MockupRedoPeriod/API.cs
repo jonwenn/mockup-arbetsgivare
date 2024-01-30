@@ -16,14 +16,14 @@ namespace MockupRedoPeriod
     }
     internal class API
     {
-        private string _uriBase = "https://api.test.skatteverket.se/enkeltesttjanst/abetsgivardeklaration/inlamning/v1";
+        private string _uriBase = "https://api.test.skatteverket.se/enkeltesttjanst";
         public API()
         {
         }
 
         public async Task Query(string endpoint)
         {
-            var options = new RestClientOptions(_uriBase)
+            var options = new RestClientOptions(_uriBase + "/abetsgivardeklaration/hanteraredovisningsperiod/v1/")
             { };
             var client = new RestClient(options);
             var request = new RestRequest(endpoint);
@@ -42,7 +42,7 @@ namespace MockupRedoPeriod
 
         public async Task Post(string endpoint)
         {
-            var options = new RestClientOptions(_uriBase)
+            var options = new RestClientOptions(_uriBase + "/abetsgivardeklaration/inlamning/v1")
             { };
             var client = new RestClient(options);
             var request = new RestRequest(endpoint, Method.Post);
