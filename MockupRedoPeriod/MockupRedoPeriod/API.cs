@@ -48,11 +48,11 @@ namespace MockupRedoPeriod
             request.AddHeader("content-type", "application/xml");
             request.AddHeader("client_id", "\"\"");
             request.AddHeader("client_secret", "\"\"");
-            request.AddHeader("skv_client_correlation_id", "adda9696-e6ed-11e7-80c1-9a214cf093ae");
+            request.AddHeader("SKV-client_correlationid", "adda9696-e6ed-11e7-80c1-9a214cf093ae");
 
             request.RequestFormat = DataFormat.Xml;
 
-            response = client.ExecuteGet(request);
+            response = client.ExecutePost(request);
         }
 
         public void GetGrundData(string arbetsgivarregistrerad, string redovisningsperiod)
