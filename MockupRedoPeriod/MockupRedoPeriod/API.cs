@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Security.AccessControl;
 using System.Text;
+using System.Text.Json;
 using System.Threading;
 using System.Threading.Tasks;
 using static System.Net.WebRequestMethods;
@@ -31,6 +32,21 @@ namespace MockupRedoPeriod
             request.AddHeader("client_id", "\"\"");
             request.AddHeader("client_secret", "\"\"");
             request.AddHeader("skv_client_correlation_id", "0002aa29-49f2-4baf-be51-c7c39c9824b4");
+            request.AddHeader("Authorization", "Bearer aToken");
+
+            response = client.ExecuteGet(request);
+        }
+
+        public void Get2(string endpoint)
+        {
+            var options = new RestClientOptions(_uriBase);
+            var client = new RestClient(options);
+            var request = new RestRequest(endpoint, Method.Get);
+
+            request.AddHeader("Accept", "application/json");
+            request.AddHeader("client_id", "\"\"");
+            request.AddHeader("client_secret", "\"\"");
+            request.AddHeader("SKV-client_correlationid", "0002aa29-49f2-4baf-be51-c7c39c9824b4");
             request.AddHeader("Authorization", "Bearer aToken");
 
             response = client.ExecuteGet(request);
@@ -70,7 +86,23 @@ namespace MockupRedoPeriod
             }
         }
 
-        public void PostInlamning()
+        public void GetKontrollresultat(int id)
+        {
+            string uriCall = "/enkeltesttjanst/arbetsgivardeklaration/inlamning/v1";
+            string endpoint = uriCall + $"/underlag/{id}/kontrollresultat";
+            
+            Get2(endpoint);
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                var content = response.Content;
+                if (content != null)
+                {
+
+                }
+            }
+        }
+
+        public int PostInlamning()
         {
 
             string uriCall = "/enkeltesttjanst/arbetsgivardeklaration/inlamning/v1";
@@ -85,9 +117,11 @@ namespace MockupRedoPeriod
                 var content = response.Content;
                 if (content != null)
                 {
-
+                    InlamningSvar svar = JsonSerializer.Deserialize<InlamningSvar>(content);
+                    return svar.InlamningId;
                 }
             }
+            return -1;
         }
 
         private string XMLFile()
