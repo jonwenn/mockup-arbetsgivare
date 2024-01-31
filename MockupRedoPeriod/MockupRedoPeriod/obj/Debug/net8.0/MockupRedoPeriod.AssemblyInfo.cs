@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MockupRedoPeriod")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d786520f48c7113f08ae3a1644fb59806d35b6f4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2491419dd26a0d773ec94ed2c4fa6d61f8b3a051")]
 [assembly: System.Reflection.AssemblyProductAttribute("MockupRedoPeriod")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MockupRedoPeriod")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
