@@ -7,6 +7,6 @@ string environment = "https://api.test.skatteverket.se";
 
 var api = new API(environment);
 
-await api.GetGrundData("165560143041", "201903");
+//api.GetGrundData("160101010101", "201005");
 
-//await api.PostInlamning();
+api.PostInlamning();
